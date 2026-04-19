@@ -1,0 +1,96 @@
+<mxfile host="app.diagrams.net" modified="2025-10-14T00:00:00.000Z" agent="FSM-gen" version="24.7.7">
+  <diagram id="rsa-fsm" name="Rsa256Wrapper FSM">
+    <mxGraphModel dx="1568" dy="881" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1080" background="#FFFFFF">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- START node -->
+        <mxCell id="start" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1a1a1a;strokeColor=#1a1a1a;perimeter=ellipsePerimeter;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="140" y="220" width="18" height="18" as="geometry"/>
+        </mxCell>
+
+        <!-- S_GET_KEY -->
+        <mxCell id="S_GET_KEY" value="S_GET_KEY" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#1f1f1f;perimeter=ellipsePerimeter;" vertex="1" parent="1">
+          <mxGeometry x="210" y="200" width="140" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- S_GET_DATA -->
+        <mxCell id="S_GET_DATA" value="S_GET_DATA" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#1f1f1f;perimeter=ellipsePerimeter;" vertex="1" parent="1">
+          <mxGeometry x="450" y="120" width="140" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- S_WAIT_CALCULATE -->
+        <mxCell id="S_WAIT_CALCULATE" value="S_WAIT_CALCULATE" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#1f1f1f;perimeter=ellipsePerimeter;" vertex="1" parent="1">
+          <mxGeometry x="700" y="200" width="170" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- S_SEND_DATA -->
+        <mxCell id="S_SEND_DATA" value="S_SEND_DATA" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#1f1f1f;perimeter=ellipsePerimeter;" vertex="1" parent="1">
+          <mxGeometry x="450" y="300" width="140" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- start -> S_GET_KEY -->
+        <mxCell id="e_start_key" value="" style="endArrow=block;html=1;strokeColor=#1a1a1a;" edge="1" parent="1" source="start" target="S_GET_KEY">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- S_GET_KEY -> S_GET_DATA -->
+        <mxCell id="e_key_data" value="keys read == 64B&#10;(bytes_counter==0 after RX)" style="endArrow=block;html=1;strokeColor=#6c8ebf;fontColor=#1f1f1f;" edge="1" parent="1" source="S_GET_KEY" target="S_GET_DATA">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="380" y="160" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- S_GET_DATA -> S_WAIT_CALCULATE -->
+        <mxCell id="e_data_wait" value="enc read == 32B&#10;then rsa_start=1" style="endArrow=block;html=1;strokeColor=#6c8ebf;fontColor=#1f1f1f;" edge="1" parent="1" source="S_GET_DATA" target="S_WAIT_CALCULATE">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- S_WAIT_CALCULATE -> S_SEND_DATA -->
+        <mxCell id="e_wait_send" value="rsa_finished==1" style="endArrow=block;html=1;strokeColor=#6c8ebf;fontColor=#1f1f1f;" edge="1" parent="1" source="S_WAIT_CALCULATE" target="S_SEND_DATA">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- S_SEND_DATA -> S_GET_DATA (loop) -->
+        <mxCell id="e_send_data" value="sent 32B&#10;(bytes_counter==0)" style="endArrow=block;html=1;strokeColor=#6c8ebf;fontColor=#1f1f1f;curved=1;" edge="1" parent="1" source="S_SEND_DATA" target="S_GET_DATA">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="520" y="260"/>
+              <mxPoint x="520" y="200"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Self-wait edges (可選) -->
+        <mxCell id="e_key_self" value="wait RRDY / waitrequest" style="endArrow=block;html=1;strokeColor=#b0b0b0;dashed=1;curved=1;" edge="1" parent="1" source="S_GET_KEY" target="S_GET_KEY">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="200" y="160"/>
+              <mxPoint x="180" y="240"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="e_data_self" value="wait RRDY / waitrequest" style="endArrow=block;html=1;strokeColor=#b0b0b0;dashed=1;curved=1;" edge="1" parent="1" source="S_GET_DATA" target="S_GET_DATA">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="520" y="90"/>
+              <mxPoint x="600" y="150"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="e_send_self" value="wait TX_OK / waitrequest" style="endArrow=block;html=1;strokeColor=#b0b0b0;dashed=1;curved=1;" edge="1" parent="1" source="S_SEND_DATA" target="S_SEND_DATA">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="520" y="400"/>
+              <mxPoint x="600" y="340"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

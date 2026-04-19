@@ -1,0 +1,52 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Rsa256Core FSM" id="rsa256core">
+    <mxGraphModel dx="827" dy="541" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- States -->
+        <mxCell id="idle" value="S_IDLE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf" vertex="1" parent="1">
+          <mxGeometry x="70" y="100" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="prep" value="S_PREP" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00" vertex="1" parent="1">
+          <mxGeometry x="260" y="100" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="mont" value="S_MONT\n(mont_sub_state controls M/T²)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6" vertex="1" parent="1">
+          <mxGeometry x="450" y="100" width="160" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="done" value="S_DONE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366" vertex="1" parent="1">
+          <mxGeometry x="650" y="100" width="120" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrows -->
+        <mxCell id="e1" edge="1" parent="1" source="idle" target="prep">
+          <mxGeometry relative="1" as="geometry"/>
+          <mxCell style="endArrow=block" value="i_start" as="style"/>
+        </mxCell>
+
+        <mxCell id="e2" edge="1" parent="1" source="prep" target="mont">
+          <mxGeometry relative="1" as="geometry"/>
+          <mxCell style="endArrow=block" value="prep_ready" as="style"/>
+        </mxCell>
+
+        <mxCell id="e3" edge="1" parent="1" source="mont" target="done">
+          <mxGeometry relative="1" as="geometry"/>
+          <mxCell style="endArrow=block" value="bit_counter==255 &amp; mont_ready" as="style"/>
+        </mxCell>
+
+        <mxCell id="e4" edge="1" parent="1" source="done" target="idle">
+          <mxGeometry relative="1" as="geometry"/>
+          <mxCell style="endArrow=block" value="auto reset" as="style"/>
+        </mxCell>
+
+        <mxCell id="e5" edge="1" parent="1" source="mont" target="mont">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="530" y="200" as="targetPoint"/>
+          </mxGeometry>
+          <mxCell style="endArrow=block" value="loop bits\n(mont_ready → next bit)" as="style"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

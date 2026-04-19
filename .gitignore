@@ -1,0 +1,9 @@
+incremental_db/
+db/
+output_files/
+*.qws
+*.rpt
+*.sof
+.DS_Store
+__pycache__/
+*.pyc
