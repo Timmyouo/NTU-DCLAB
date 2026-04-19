@@ -4,7 +4,7 @@ Hands-on **FPGA system design** projects from the **Digital Circuits Lab (數位
 
 Every project in this portfolio was **synthesized, placed & routed in Quartus II, programmed onto real hardware, and verified end-to-end using the board's actual peripherals** — external SRAM, VGA, RS-232, on-board audio codec, push-buttons, switches, seven-segment displays, and (for the capstone) a Bluetooth-linked Arduino controller. Where appropriate, **Qsys / Platform Designer** is used to compose the Avalon-MM subsystem (PLLs, RS-232 IP, custom masters) around the hand-written RTL.
 
-> GitHub: [Timmyouo/NTU-DCLAB-labs](https://github.com/Timmyouo/NTU-DCLAB-labs)
+> GitHub: [Timmyouo/NTU-DCLAB](https://github.com/Timmyouo/NTU-DCLAB-labs)
 > Capstone (separate repo): [Timmyouo/FPGA-Dart-Game](https://github.com/Timmyouo/FPGA-Dart-Game)
 
 ---
