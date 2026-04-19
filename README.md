@@ -1,6 +1,6 @@
-# NTU-DCLAB-labs
+# NTU-DCLAB-2025-FALL
 
-Lab assignments from a **digital circuits / FPGA** course at NTU, implemented in **SystemVerilog** on the **Terasic DE2-115 (Cyclone IV E)** development board.
+Lab assignments from a **digital circuits / FPGA** course at NTU(National Taiwan University), implemented in **SystemVerilog** on the **Terasic DE2-115 (Cyclone IV E)** development board.
 
 > GitHub: [Timmyouo/NTU-DCLAB-labs](https://github.com/Timmyouo/NTU-DCLAB-labs)
 
@@ -9,15 +9,13 @@ Lab assignments from a **digital circuits / FPGA** course at NTU, implemented in
 ## Projects
 
 
-|           | Topic                            | Key Techniques                                                  | Repo                                                           |
-| --------- | -------------------------------- | --------------------------------------------------------------- | -------------------------------------------------------------- |
-| Lab 1     | FPGA Intro & LFSR Random Number  | Synthesizable SV, FSM, LFSR, seven-segment display              | `[lab01_fpga_intro/](lab01_fpga_intro/)`                       |
-| Lab 2     | RSA-256 Hardware Accelerator     | Montgomery multiplication, Avalon-MM master, RS-232             | `[lab02_rsa256/](lab02_rsa256/)`                               |
-| Lab 3     | Audio Record / Playback over I²C | I²C init, WM8731 codec, SRAM buffer, variable-speed DSP         | `[lab03_audio_i2c/](lab03_audio_i2c/)`                         |
-| **Final** | **Two-Player FPGA Dart Game**    | VGA, external SRAM, Bluetooth UART, IMU physics engine, Arduino | [FPGA-Dart-Game ↗](https://github.com/Timmyouo/FPGA-Dart-Game) |
+|           | Topic                                    | Key Techniques                                                  | Repo                                                           |
+| --------- | ---------------------------------------- | --------------------------------------------------------------- | -------------------------------------------------------------- |
+| Lab 1     | FPGA Intro & LFSR Random Number          | Synthesizable SV, FSM, LFSR, seven-segment display              | `[lab01_fpga_intro/](lab01_fpga_intro/)`                       |
+| Lab 2     | RSA-256 Hardware Accelerator             | Montgomery multiplication, Avalon-MM master, RS-232             | `[lab02_rsa256/](lab02_rsa256/)`                               |
+| Lab 3     | Audio Record / Playback and Speed Change | I²C init, WM8731 codec, SRAM buffer, variable-speed DSP         | `[lab03_audio_i2c/](lab03_audio_i2c/)`                         |
+| **Final** | **Two-Player FPGA Dart Game**            | VGA, external SRAM, Bluetooth UART, IMU physics engine, Arduino | [FPGA-Dart-Game ↗](https://github.com/Timmyouo/FPGA-Dart-Game) |
 
-
-[Gameplay demo](https://youtu.be/cwpWrTNM2AM)
 
 ---
 
@@ -33,9 +31,3 @@ Lab assignments from a **digital circuits / FPGA** course at NTU, implemented in
 
 
 Board: **EP4CE115F29C7** on DE2-115, 50 MHz on-board oscillator.
-
----
-
-## License
-
-Course work — verify your institution's academic integrity policy before making this repository public.
